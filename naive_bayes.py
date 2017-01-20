@@ -99,6 +99,7 @@ class NaiveBayes(object):
         self.p_c = list()
         # stored probabilities of each word in each class
         self.p_wc = None
+        self.e = 0.1
 
     def train(self, X, y):
         """
@@ -124,13 +125,23 @@ class NaiveBayes(object):
         matrices = []
         sum_classes = []
         for i,label in enumerate(total):
-            
-            self.p_c.append((y == label).sum() / len(total))
+            self.p_c.append((y == label).sum() / len(y))
             matrices.append(X[y == label])
-        for matrix in matrices:
-            sum_classes.append(numpy.sum(matrix.todense(),axis=0))
-        
-        pdb.set_trace()
+
+        for i, matrix in enumerate(matrices):
+            column_summed_matrix = numpy.sum(matrix.todense(), axis=0) + self.e
+
+            nC = column_summed_matrix.sum() + self.e
+
+            if i == 0:
+                p_row = numpy.divide(column_summed_matrix, nC)
+
+            else:
+                p_row_onwards = numpy.divide(column_summed_matrix, nC)
+                p_row = numpy.concatenate((p_row, p_row_onwards))
+
+        self.p_wc = p_row
+
         # TODO!
 
     def predict(self, X):
