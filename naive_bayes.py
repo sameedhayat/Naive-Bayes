@@ -8,6 +8,7 @@ Patrick Brosi <brosi@cs.uni-freiburg.de>
 import re
 import sys
 import numpy
+import pdb
 from scipy.sparse import csr_matrix
 
 
@@ -95,7 +96,7 @@ class NaiveBayes(object):
         """
 
         # stored probabilities of each class.
-        self.p_c = None
+        self.p_c = list()
         # stored probabilities of each word in each class
         self.p_wc = None
 
@@ -119,7 +120,17 @@ class NaiveBayes(object):
         >>> numpy.round(nb.p_c, 3)
         array([ 0.5,  0.5])
         """
-
+        total = numpy.unique(y)
+        matrices = []
+        sum_classes = []
+        for i,label in enumerate(total):
+            
+            self.p_c.append((y == label).sum() / len(total))
+            matrices.append(X[y == label])
+        for matrix in matrices:
+            sum_classes.append(numpy.sum(matrix.todense(),axis=0))
+        
+        pdb.set_trace()
         # TODO!
 
     def predict(self, X):
@@ -158,7 +169,8 @@ def main():
     word_vocab, class_vocab = generate_vocab(sys.argv[1])
     X_train, y_train = read_labeled_data(sys.argv[1], class_vocab, word_vocab)
     X_test, y_test = read_labeled_data(sys.argv[2], class_vocab, word_vocab)
-
+    n = NaiveBayes()
+    n.train(X_train,y_train)
     # do training on training dataset
 
     # run the evaluation on the test dataset
