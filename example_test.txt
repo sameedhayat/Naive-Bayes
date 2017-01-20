@@ -1,0 +1,2 @@
+A	b a a a a a a
+B	a b b b b b b
