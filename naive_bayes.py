@@ -100,6 +100,7 @@ class NaiveBayes(object):
         # stored probabilities of each word in each class
         self.p_wc = None
         self.e = 0.1
+        self.log_p_wc = None
 
     def train(self, X, y, word_vocab):
         """
@@ -121,10 +122,10 @@ class NaiveBayes(object):
         >>> numpy.round(nb.p_c, 3)
         array([ 0.5,  0.5])
         """
+
         total = numpy.unique(y)
         matrices = []
-        sum_classes = []
-        for i,label in enumerate(total):
+        for i, label in enumerate(total):
             self.p_c.append((y == label).sum() / len(y))
             matrices.append(X[y == label])
 
@@ -144,6 +145,7 @@ class NaiveBayes(object):
                 p_row = numpy.concatenate((p_row, p_row_onwards))
 
         self.p_wc = p_row
+        self.log_p_wc = numpy.log(self.p_wc)
 
         # TODO!
 
@@ -157,15 +159,26 @@ class NaiveBayes(object):
         >>> wv, cv = generate_vocab("example.txt")
         >>> X, y = read_labeled_data("example.txt", cv, wv)
         >>> nb = NaiveBayes()
-        >>> nb.train(X, y)
+        >>> nb.train(X, y, wv)
         >>> X_test, y_test = read_labeled_data("example_test.txt", cv, wv)
         >>> nb.predict(X_test)
-        array([0, 1])
+        [0, 1]
         >>> nb.predict(X)
-        array([0, 0, 1, 0, 1, 1])
+        [0, 0, 1, 0, 1, 1]
         """
+        predictions = []
+        for doc_row in X.todense():
+            log_q_cs = []
 
-        return None  # TODO!
+            for prob_row in self.log_p_wc:
+                sum_array = numpy.prod([prob_row, doc_row], axis=0)
+                # q_c.append(numpy.product(powered_array))
+                log_q_cs = numpy.append(log_q_cs, numpy.sum(sum_array))
+
+            max_index = log_q_cs.argmax(axis=0)
+            predictions.append(max_index)
+
+        return predictions  # TODO!
 
     def evaluate(self, X, y):
         """
@@ -185,6 +198,7 @@ def main():
     X_test, y_test = read_labeled_data(sys.argv[2], class_vocab, word_vocab)
     n = NaiveBayes()
     n.train(X_train,y_train, word_vocab)
+    n.predict(X_test)
     # do training on training dataset
 
     # run the evaluation on the test dataset
