@@ -101,7 +101,7 @@ class NaiveBayes(object):
         self.p_wc = None
         self.e = 0.1
 
-    def train(self, X, y):
+    def train(self, X, y, word_vocab):
         """
         Train on the sparse document-term matrix X and associated labels y.
 
@@ -114,7 +114,7 @@ class NaiveBayes(object):
         >>> wv, cv = generate_vocab("example.txt")
         >>> X, y = read_labeled_data("example.txt", cv, wv)
         >>> nb = NaiveBayes()
-        >>> nb.train(X, y)
+        >>> nb.train(X, y, wv)
         >>> numpy.round(nb.p_wc, 3)
         array([[ 0.664,  0.336],
                [ 0.335,  0.665]])
@@ -129,9 +129,12 @@ class NaiveBayes(object):
             matrices.append(X[y == label])
 
         for i, matrix in enumerate(matrices):
-            column_summed_matrix = numpy.sum(matrix.todense(), axis=0) + self.e
+            column_summed_matrix = numpy.sum(matrix.todense(), axis=0)
 
-            nC = column_summed_matrix.sum() + self.e
+            n_vocab = len(word_vocab.keys())
+            nC = column_summed_matrix.sum() + self.e * n_vocab
+
+            column_summed_matrix += self.e
 
             if i == 0:
                 p_row = numpy.divide(column_summed_matrix, nC)
@@ -181,7 +184,7 @@ def main():
     X_train, y_train = read_labeled_data(sys.argv[1], class_vocab, word_vocab)
     X_test, y_test = read_labeled_data(sys.argv[2], class_vocab, word_vocab)
     n = NaiveBayes()
-    n.train(X_train,y_train)
+    n.train(X_train,y_train, word_vocab)
     # do training on training dataset
 
     # run the evaluation on the test dataset
