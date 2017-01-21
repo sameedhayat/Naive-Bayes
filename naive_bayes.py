@@ -89,7 +89,7 @@ def read_labeled_data(filename, class_vocab, word_vocab):
 
 class NaiveBayes(object):
 
-    def __init__(self):
+    def __init__(self,class_vocab, word_vocab):
         """
         Init a naive bayes classifier supporting num_classes of classes
         and num_features of words.
@@ -97,11 +97,15 @@ class NaiveBayes(object):
 
         # stored probabilities of each class.
         self.p_c = list()
+	
         # stored probabilities of each word in each class
         self.p_wc = None
         self.e = 0.1
         self.log_p_wc = None
-
+        self.classes = list()
+        self.class_vocab = class_vocab
+        self.word_vocab = word_vocab
+        
     def train(self, X, y, word_vocab):
         """
         Train on the sparse document-term matrix X and associated labels y.
@@ -124,6 +128,7 @@ class NaiveBayes(object):
         """
 
         total = numpy.unique(y)
+        self.classes = total
         matrices = []
         for i, label in enumerate(total):
             self.p_c.append((y == label).sum() / len(y))
@@ -179,7 +184,11 @@ class NaiveBayes(object):
         """
         Predict the labels of X and print evaluation statistics.
         """
+        ret = {}
         result = []
+        for i,xclass in enumerate(y):
+            if(y[i] == result[i]):
+                ret[self.classes[y[i]] += 1
         result = numpy.array(self.predict(X))
         correct = len([r for r in result if r in y])
         precision = correct / len(y)
@@ -196,7 +205,7 @@ def main():
     word_vocab, class_vocab = generate_vocab(sys.argv[1])
     X_train, y_train = read_labeled_data(sys.argv[1], class_vocab, word_vocab)
     X_test, y_test = read_labeled_data(sys.argv[2], class_vocab, word_vocab)
-    n = NaiveBayes()
+    n = NaiveBayes(class_vocab, word_vocab)
     n.train(X_train,y_train, word_vocab)
     n.predict(X_test)
     n.evaluate(X_test, y_test)
