@@ -29,7 +29,7 @@ def generate_vocab(filename):
     # Map from word to word id.
     word_vocab = dict()
 
-    with open(filename, "r") as f:
+    with open(filename, "r", encoding="utf8") as f:
         for line in f:
             cols = line.strip().split('\t')
             label, text = cols[0], cols[1]
@@ -65,7 +65,7 @@ def read_labeled_data(filename, class_vocab, word_vocab):
     num_examples = 0
     num_cols = len(word_vocab)
 
-    with open(filename, "r") as f:
+    with open(filename, "r", encoding="utf8") as f:
         for i, line in enumerate(f):
             cols = line.strip().split('\t')
             label, text = cols[0], cols[1]
@@ -130,7 +130,8 @@ class NaiveBayes(object):
             matrices.append(X[y == label])
 
         for i, matrix in enumerate(matrices):
-            column_summed_matrix = numpy.sum(matrix.todense(), axis=0)
+            column_summed_matrix = csr_matrix.sum(matrix, axis=0)
+            # column_summed_matrix = numpy.sum(matrix.todense(), axis=0)
 
             n_vocab = len(word_vocab.keys())
             nC = column_summed_matrix.sum() + self.e * n_vocab
@@ -162,30 +163,29 @@ class NaiveBayes(object):
         >>> nb.train(X, y, wv)
         >>> X_test, y_test = read_labeled_data("example_test.txt", cv, wv)
         >>> nb.predict(X_test)
-        [0, 1]
+        matrix([[0, 1]], dtype=int32)
         >>> nb.predict(X)
-        [0, 0, 1, 0, 1, 1]
+        matrix([[0, 0, 1, 0, 1, 1]], dtype=int32)
         """
-        predictions = []
-        for doc_row in X.todense():
-            log_q_cs = []
 
-            for prob_row in self.log_p_wc:
-                sum_array = numpy.prod([prob_row, doc_row], axis=0)
-                # q_c.append(numpy.product(powered_array))
-                log_q_cs = numpy.append(log_q_cs, numpy.sum(sum_array))
+        self.log_p_wc = csr_matrix(self.log_p_wc)
+        x_transpose = X.transpose(copy=False)
+        result_matrix = self.log_p_wc.dot(x_transpose)
 
-            max_index = log_q_cs.argmax(axis=0)
-            predictions.append(max_index)
-
+        predictions = numpy.argmax(result_matrix.todense(), axis=0)
         return predictions  # TODO!
 
     def evaluate(self, X, y):
         """
         Predict the labels of X and print evaluation statistics.
         """
+        result = []
+        result = numpy.array(self.predict(X))
+        correct = len([r for r in result if r in y])
+        precision = correct / len(y)
+        recall = correct / len(result) * 100
 
-        # TODO!
+        pdb.set_trace()
 
 
 def main():
@@ -199,6 +199,7 @@ def main():
     n = NaiveBayes()
     n.train(X_train,y_train, word_vocab)
     n.predict(X_test)
+    n.evaluate(X_test, y_test)
     # do training on training dataset
 
     # run the evaluation on the test dataset
