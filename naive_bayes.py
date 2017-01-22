@@ -193,10 +193,10 @@ class NaiveBayes(object):
         # correct = len([r for r in result if r in y])
         # precision = correct / len(y)
         # recall = correct / len(result) * 100
-        self.print_pc_values(X,y)
+        self.print_pc_values()
 
 
-    def print_pc_values(self, X, y):
+    def print_pc_values(self):
         print ("")
         sorted_row_idx = numpy.argsort(self.p_wc, axis=1)[:, self.p_wc.shape[1] - 30::]
         for i, prob in enumerate(self.p_c):
