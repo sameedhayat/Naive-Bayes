@@ -184,17 +184,43 @@ class NaiveBayes(object):
         """
         Predict the labels of X and print evaluation statistics.
         """
-        ret = {}
-        result = []
-        for i,xclass in enumerate(y):
-            if(y[i] == result[i]):
-                ret[self.classes[y[i]] += 1
-        result = numpy.array(self.predict(X))
-        correct = len([r for r in result if r in y])
-        precision = correct / len(y)
-        recall = correct / len(result) * 100
+        # ret = {}
+        # result = []
+        # for i,xclass in enumerate(y):
+        #     if(y[i] == result[i]):
+        #         ret[self.classes[y[i]] += 1
+        # result = numpy.array(self.predict(X))
+        # correct = len([r for r in result if r in y])
+        # precision = correct / len(y)
+        # recall = correct / len(result) * 100
+        self.print_pc_values(X,y)
 
-        pdb.set_trace()
+
+    def print_pc_values(self, X, y):
+        print ("")
+        sorted_row_idx = numpy.argsort(self.p_wc, axis=1)[:, self.p_wc.shape[1] - 30::]
+        for i, prob in enumerate(self.p_c):
+            class_name = self.get_class_from_value(i)
+            print("Probability for class ", class_name, ": ", numpy.round(prob, 3))
+            print("Top 30 words with highest p_wc values in this class: ")
+            matrix_row = sorted_row_idx[i]
+            for count in range(matrix_row.shape[1]):
+                index = matrix_row.item(count)
+                print("Word ", count + 1, ": ", self.get_word_from_index(index))
+
+
+
+    def get_class_from_value(self, value):
+        class_name ={v: value for value, v in self.class_vocab.items()}[value]
+        return class_name
+
+    def get_word_from_index(self, value):
+        word ={v: value for value, v in self.word_vocab.items()}[value]
+        return word
+
+    def get_top_N_elements(self, row, n):
+        return numpy.argsort(row)[::-1][:n]
+
 
 
 def main():
