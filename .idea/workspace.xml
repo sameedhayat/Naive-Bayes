@@ -26,9 +26,11 @@
       <file leaf-file-name="naive_bayes.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/naive_bayes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-496">
-              <caret line="204" column="70" selection-start-line="204" selection-start-column="70" selection-end-line="204" selection-end-column="70" />
-              <folding />
+            <state relative-caret-position="-2816">
+              <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+              <folding>
+                <element signature="e#133#142#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -36,7 +38,7 @@
       <file leaf-file-name="lsi.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../../10/lsi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7172">
+            <state relative-caret-position="22">
               <caret line="336" column="34" selection-start-line="336" selection-start-column="31" selection-end-line="336" selection-end-column="34" />
               <folding />
             </state>
@@ -51,6 +53,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/../../../svn-material/ma277-sh590/sheet-11/naive_bayes.py" />
         <option value="$PROJECT_DIR$/naive_bayes.py" />
       </list>
     </option>
@@ -87,7 +90,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -108,6 +110,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -313,26 +316,20 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Doctest_NaiveBayes_predict - 2017.01.21 at 17h 01m 39s.xml">
+    <history-entry file="Doctest_NaiveBayes_predict - 2017.01.23 at 02h 33m 59s.xml">
       <configuration name="Doctest NaiveBayes.predict" configurationId="tests" />
     </history-entry>
-    <history-entry file="Doctest_NaiveBayes_predict - 2017.01.21 at 19h 11m 41s.xml">
+    <history-entry file="Doctest_NaiveBayes_predict - 2017.01.23 at 02h 35m 06s.xml">
       <configuration name="Doctest NaiveBayes.predict" configurationId="tests" />
     </history-entry>
-    <history-entry file="Doctest_NaiveBayes_predict - 2017.01.21 at 19h 11m 58s.xml">
+    <history-entry file="Doctest_NaiveBayes_predict - 2017.01.23 at 02h 35m 10s.xml">
       <configuration name="Doctest NaiveBayes.predict" configurationId="tests" />
     </history-entry>
-    <history-entry file="Doctest_NaiveBayes_predict - 2017.01.21 at 19h 12m 29s.xml">
+    <history-entry file="Doctest_NaiveBayes_predict - 2017.01.23 at 02h 35m 36s.xml">
       <configuration name="Doctest NaiveBayes.predict" configurationId="tests" />
     </history-entry>
-    <history-entry file="Doctest_NaiveBayes_predict - 2017.01.21 at 19h 13m 05s.xml">
+    <history-entry file="Doctest_NaiveBayes_predict - 2017.01.23 at 02h 40m 04s.xml">
       <configuration name="Doctest NaiveBayes.predict" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Doctest_NaiveBayes_train - 2017.01.21 at 15h 27m 14s.xml">
-      <configuration name="Doctest NaiveBayes.train" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Doctest_NaiveBayes_train - 2017.01.21 at 15h 27m 22s.xml">
-      <configuration name="Doctest NaiveBayes.train" configurationId="tests" />
     </history-entry>
     <history-entry file="Doctest_NaiveBayes_train - 2017.01.21 at 15h 27m 26s.xml">
       <configuration name="Doctest NaiveBayes.train" configurationId="tests" />
@@ -343,28 +340,34 @@
     <history-entry file="Doctest_NaiveBayes_train - 2017.01.21 at 18h 26m 44s.xml">
       <configuration name="Doctest NaiveBayes.train" configurationId="tests" />
     </history-entry>
+    <history-entry file="Doctest_NaiveBayes_train - 2017.01.23 at 02h 32m 52s.xml">
+      <configuration name="Doctest NaiveBayes.train" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctest_NaiveBayes_train - 2017.01.23 at 02h 33m 46s.xml">
+      <configuration name="Doctest NaiveBayes.train" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4304348" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35652173" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2826087" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -387,6 +390,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#133#142#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../10/lsi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7392">
+          <caret line="336" column="34" selection-start-line="336" selection-start-column="31" selection-end-line="336" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -395,7 +408,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#133#142#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../10/lsi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7172">
+          <caret line="336" column="34" selection-start-line="336" selection-start-column="31" selection-end-line="336" selection-end-column="34" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naive_bayes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#133#142#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naive_bayes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#133#142#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -411,7 +454,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
           <caret line="202" column="20" selection-start-line="202" selection-start-column="20" selection-end-line="202" selection-end-column="20" />
-          <folding />
+          <folding>
+            <element signature="e#133#142#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -419,7 +464,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#133#142#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -427,23 +474,35 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naive_bayes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-496">
-          <caret line="204" column="70" selection-start-line="204" selection-start-column="70" selection-end-line="204" selection-end-column="70" />
-          <folding />
+          <folding>
+            <element signature="e#133#142#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../10/lsi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7172">
+        <state relative-caret-position="22">
           <caret line="336" column="34" selection-start-line="336" selection-start-column="31" selection-end-line="336" selection-end-column="34" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../svn-material/ma277-sh590/sheet-11/naive_bayes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="208" column="18" selection-start-line="208" selection-start-column="18" selection-end-line="208" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naive_bayes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2816">
+          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+          <folding>
+            <element signature="e#133#142#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -1,14 +1,13 @@
 """
 Copyright 2017, University of Freiburg.
 
-Elmar Haussmann <haussmann@cs.uni-freiburg.de>
-Patrick Brosi <brosi@cs.uni-freiburg.de>
+Muhammad Hamiz Ahmed <hamizahmed93@gmail.com>
+Sameed Hayat <sameedhayat@gmail.com>
 """
 
 import re
 import sys
 import numpy
-import pdb
 from scipy.sparse import csr_matrix
 
 
@@ -89,7 +88,7 @@ def read_labeled_data(filename, class_vocab, word_vocab):
 
 class NaiveBayes(object):
 
-    def __init__(self,class_vocab, word_vocab):
+    def __init__(self, class_vocab, word_vocab):
         """
         Init a naive bayes classifier supporting num_classes of classes
         and num_features of words.
@@ -97,7 +96,7 @@ class NaiveBayes(object):
 
         # stored probabilities of each class.
         self.p_c = list()
-	
+
         # stored probabilities of each word in each class
         self.p_wc = None
         self.e = 0.1
@@ -105,7 +104,7 @@ class NaiveBayes(object):
         self.classes = list()
         self.class_vocab = class_vocab
         self.word_vocab = word_vocab
-        
+
     def train(self, X, y, word_vocab):
         """
         Train on the sparse document-term matrix X and associated labels y.
@@ -118,7 +117,7 @@ class NaiveBayes(object):
 
         >>> wv, cv = generate_vocab("example.txt")
         >>> X, y = read_labeled_data("example.txt", cv, wv)
-        >>> nb = NaiveBayes()
+        >>> nb = NaiveBayes(cv, wv)
         >>> nb.train(X, y, wv)
         >>> numpy.round(nb.p_wc, 3)
         array([[ 0.664,  0.336],
@@ -164,13 +163,13 @@ class NaiveBayes(object):
 
         >>> wv, cv = generate_vocab("example.txt")
         >>> X, y = read_labeled_data("example.txt", cv, wv)
-        >>> nb = NaiveBayes()
+        >>> nb = NaiveBayes(cv, wv)
         >>> nb.train(X, y, wv)
         >>> X_test, y_test = read_labeled_data("example_test.txt", cv, wv)
         >>> nb.predict(X_test)
-        matrix([[0, 1]], dtype=int32)
+        matrix([[0, 1]])
         >>> nb.predict(X)
-        matrix([[0, 0, 1, 0, 1, 1]], dtype=int32)
+        matrix([[0, 0, 1, 0, 1, 1]])
         """
 
         self.log_p_wc = csr_matrix(self.log_p_wc)
@@ -184,43 +183,46 @@ class NaiveBayes(object):
         """
         Predict the labels of X and print evaluation statistics.
         """
-        # ret = {}
-        # result = []
-        # for i,xclass in enumerate(y):
-        #     if(y[i] == result[i]):
-        #         ret[self.classes[y[i]] += 1
-        # result = numpy.array(self.predict(X))
-        # correct = len([r for r in result if r in y])
-        # precision = correct / len(y)
-        # recall = correct / len(result) * 100
-        self.print_pc_values()
+        ret = {}
+        precision = {}
+        recall = {}
+        result = []
+        result = numpy.array(self.predict(X)).flatten()
+        for i, xclass in enumerate(y):
+            if y[i] == result[i]:
+                if y[i] not in ret.keys():
+                    ret[y[i]] = 1
+                else:
+                    ret[y[i]] += 1
 
+        for xclass in self.classes:
+            recall[xclass] = (ret[xclass] / (y == xclass).sum()) * 100
+            precision[xclass] = (ret[xclass] / (result == xclass).sum()) * 100
+        self.print_pc_values(precision, recall)
 
-    def print_pc_values(self):
-        print ("")
-        sorted_row_idx = numpy.argsort(self.p_wc, axis=1)[:, self.p_wc.shape[1] - 30::]
+    def print_pc_values(self, prec, recall):
+        sorted_row_idx = numpy.argsort(self.p_wc, axis=1)[
+                         :, self.p_wc.shape[1] - 30::]
         for i, prob in enumerate(self.p_c):
             class_name = self.get_class_from_value(i)
-            print("Probability for class ", class_name, ": ", numpy.round(prob, 3))
+            print("Probability for class ", class_name, ": ",
+                  numpy.round(prob, 3))
+            print("Precision: ", numpy.round(prec[i], 3))
+            print("Recall: ", numpy.round(recall[i], 3))
             print("Top 30 words with highest p_wc values in this class: ")
             matrix_row = sorted_row_idx[i]
             for count in range(matrix_row.shape[1]):
                 index = matrix_row.item(count)
-                print("Word ", count + 1, ": ", self.get_word_from_index(index))
-
-
+                print("Word ", count + 1,
+                      ": ", self.get_word_from_index(index))
 
     def get_class_from_value(self, value):
-        class_name ={v: value for value, v in self.class_vocab.items()}[value]
+        class_name = {v: value for value, v in self.class_vocab.items()}[value]
         return class_name
 
     def get_word_from_index(self, value):
-        word ={v: value for value, v in self.word_vocab.items()}[value]
+        word = {v: value for value, v in self.word_vocab.items()}[value]
         return word
-
-    def get_top_N_elements(self, row, n):
-        return numpy.argsort(row)[::-1][:n]
-
 
 
 def main():
@@ -232,7 +234,7 @@ def main():
     X_train, y_train = read_labeled_data(sys.argv[1], class_vocab, word_vocab)
     X_test, y_test = read_labeled_data(sys.argv[2], class_vocab, word_vocab)
     n = NaiveBayes(class_vocab, word_vocab)
-    n.train(X_train,y_train, word_vocab)
+    n.train(X_train, y_train, word_vocab)
     n.predict(X_test)
     n.evaluate(X_test, y_test)
     # do training on training dataset
